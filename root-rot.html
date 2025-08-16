@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัญญาณเตือน: รากเน่า - คู่มือไฮโดรโปนิกส์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #92400e 0%, #7c2d12 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(146, 64, 14, 0.3);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #92400e;
+        }
+
+        .image-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #92400e;
+        }
+
+        .plant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-caption {
+            font-size: 1.1rem;
+            color: #7c2d12;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #92400e;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: #7c2d12;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 2px solid #fca5a5;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #dc2626;
+        }
+
+        .solution-box {
+            background: #ecfdf5;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #22c55e;
+        }
+
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            background: #92400e;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .emergency-box {
+            background: #fef2f2;
+            border: 3px solid #dc2626;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="javascript:history.back()" class="back-btn">← กลับหน้าหลัก</a>
+            <h1>🤎 รากเน่า</h1>
+            <p class="subtitle">ปัญหาร้ายแรงที่ต้องแก้ไขทันที</p>
+        </header>
+
+        <div class="emergency-box">
+            <h3 style="color: #dc2626; text-align: center;">🚨 สถานการณ์ฉุกเฉิน - ต้องแก้ไขทันที!</h3>
+            <p style="text-align: center; margin-top: 0.5rem;">รากเน่าสามารถฆ่าพืชได้ภายใน 24-48 ชั่วโมง</p>
+        </div>
+
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1585082102651-ab7c54a5a8c8?w=500&h=300&fit=crop&crop=center" 
+                 alt="รากเน่าในระบบไฮโดรโปนิกส์" class="plant-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-size: 8rem; color: #92400e;">🤎</div>
+            <p class="image-caption">ตัวอย่างรากเน่าในระบบไฮโดรโปนิกส์</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>🔍 อาการที่พบ</h2>
+                <ul>
+                    <li>รากเปลี่ยนเป็นสีน้ำตาล/ดำ</li>
+                    <li>รากมีกลิ่นเหม็นเน่า</li>
+                    <li>รากลื่นเหนียว สัมผัสนุ่ม</li>
+                    <li>พืชเหี่ยวแม้มีน้ำ</li>
+                    <li>ใบเหลือง ร่วงง่าย</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>⚠️ สาเหตุหลัก</h2>
+                <ul>
+                    <li><strong>ขาดออกซิเจน:</strong> ปั๊มลมไม่ทำงาน</li>
+                    <li><strong>อุณหภูมิสูง:</strong> น้ำร้อนเกิน 30°C</li>
+                    <li><strong>สารละลายเสีย:</strong> ไม่เปลี่ยนนาน</li>
+                    <li><strong>แสงเข้าถังน้ำ:</strong> เกิดตะไคร่</li>
+                    <li><strong>ระบบไม่สะอาด:</strong> เชื้อโรคสะสม</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution-box">
+            <h2>✅ วิธีแก้ไขด่วน</h2>
+            
+            <div class="step-by-step">
+                <h3>ขั้นตอนการแก้ไขฉุกเฉิน</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>ยกพืชออกทันที</strong><br>
+                        นำพืชออกจากระบบ ล้างรากด้วยน้ำสะอาด
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>ตัดรากเน่าออก</strong><br>
+                        ใช้กรรไกรสะอาด ตัดรากที่เน่าออกให้หมด เหลือแต่รากขาว
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>ล้างระบบทั้งหมด</strong><br>
+                        ล้างถัง ท่อ ปั๊ม ด้วยน้ำและฟอกขาว เปลี่ยนน้ำใหม่ทั้งหมด
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>เพิ่มออกซิเจน</strong><br>
+                        ตรวจปั๊มลม เพิ่มจำนวนปั๊มลม หรือเปลี่ยนหัวทำฟอง
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>
+                        <strong>ควบคุมอุณหภูมิ</strong><br>
+                        ลดอุณหภูมิน้ำให้ต่ำกว่า 25°C ใช้พัดลมหรือน้ำแข็ง
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div>
+                        <strong>ใส่พืชกลับ</strong><br>
+                        ใส่พืชที่ล้างแล้วกลับเข้าระบบใหม่ ติดตามอย่างใกล้ชิด
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h3>🚨 ข้อควรระวัง</h3>
+            <ul>
+                <li>หากรากเน่ามากกว่า 50% พืชอาจไม่รอด</li>
+                <li>อย่าใช้เครื่องมือเดียวกันกับพืชอื่น ป้องกันการแพร่เชื้อ</li>
+                <li>ระวังการใช้สารเคมีฆ่าเชื้อ อาจทำลายรากที่ดี</li>
+                <li>ตรวจสอบความเป็นกรด-ด่าง ควรอยู่ที่ 5.5-6.5</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🔄 การป้องกัน</h2>
+            <ul>
+                <li>เปิดปั๊มลมตลอด 24 ชั่วโมง</li>
+                <li>ปิดถังน้ำไม่ให้แสงส่องเข้า</li>
+                <li>เปลี่ยนสารละลายทุก 7-10 วัน</li>
+                <li>รักษาอุณหภูมิน้ำไม่เกิน 25°C</li>
+                <li>ทำความสะอาดระบบเป็นประจำ</li>
+                <li>ตรวจสอบรากทุกสัปดาห์</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🩺 การตรวจสอบรากที่ดี</h2>
+            <ul>
+                <li><strong>สีขาว/ครีม:</strong> รากสุขภาพดี</li>
+                <li><strong>แข็งแรง:</strong> ไม่นุ่มเมื่อหยิบ</li>
+                <li><strong>ไม่มีกลิ่น:</strong> กลิ่นปกติของน้ำ</li>
+                <li><strong>รากฝอยมาก:</strong> การเจริญเติบโตดี</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

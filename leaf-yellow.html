@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัญญาณเตือน: ใบเหลือง - คู่มือไฮโดรโปนิกส์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #fbbf24;
+        }
+
+        .image-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #fbbf24;
+        }
+
+        .plant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-caption {
+            font-size: 1.1rem;
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #f59e0b;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: #92400e;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .solution-box {
+            background: #ecfdf5;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #22c55e;
+        }
+
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            background: #fbbf24;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="javascript:history.back()" class="back-btn">← กลับหน้าหลัก</a>
+            <h1>🟡 ใบเหลือง</h1>
+            <p class="subtitle">สัญญาณเตือนและการแก้ไขปัญหา</p>
+        </header>
+
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=300&fit=crop&crop=center" 
+                 alt="ใบเหลืองในผักไฮโดรโปนิกส์" class="plant-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-size: 8rem; color: #fbbf24;">🟡</div>
+            <p class="image-caption">ตัวอย่างใบเหลืองในระบบไฮโดรโปนิกส์</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>🔍 อาการที่พบ</h2>
+                <ul>
+                    <li>ใบเปลี่ยนเป็นสีเหลือง โดยเฉพาะใบล่าง</li>
+                    <li>ใบเหลืองจากขอบเข้าสู่กลางใบ</li>
+                    <li>ใบอาจร่วงหล่นได้ง่าย</li>
+                    <li>การเจริญเติบโตช้าลง</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>⚠️ สาเหตุหลัก</h2>
+                <ul>
+                    <li><strong>ขาดไนโตรเจน:</strong> สาเหตุพบบ่อยที่สุด</li>
+                    <li><strong>น้ำท่วมราก:</strong> รากขาดออกซิเจน</li>
+                    <li><strong>อายุของใบ:</strong> ใบแก่เหลืองตามธรรมชาติ</li>
+                    <li><strong>ค่า pH ผิดปกติ:</strong> ดูดซึมธาตุอาหารไม่ได้</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution-box">
+            <h2>✅ วิธีแก้ไขปัญหา</h2>
+            
+            <div class="step-by-step">
+                <h3>ขั้นตอนการแก้ไข</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>ตรวจสอบค่า pH</strong><br>
+                        วัดค่า pH ควรอยู่ที่ 5.5-6.5 หากผิดปกติให้ปรับด้วย pH Up/Down
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>เพิ่มสารอาหารไนโตรเจน</strong><br>
+                        เพิ่มสารอาหาร A หรือ B ที่มีไนโตรเจนสูง ตามคำแนะนำบนฉลาก
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>ตรวจสอบระบบระบายน้ำ</strong><br>
+                        ตรวจสอบปั๊มลม ท่อระบายน้ำ และการไหลเวียนของน้ำ
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>ตัดใบเหลืองออก</strong><br>
+                        ตัดใบที่เหลืองแล้วออกเพื่อไม่ให้เป็นแหล่งเพาะเชื้อโรค
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>
+                        <strong>เปลี่ยนสารละลายใหม่</strong><br>
+                        หากปัญหารุนแรง ควรเปลี่ยนสารละลายทั้งหมดและเริ่มใหม่
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h3>🚨 ข้อควรระวัง</h3>
+            <ul>
+                <li>อย่าเพิ่มสารอาหารมากเกินไป อาจทำให้เกิดปัญหาอื่น</li>
+                <li>ตรวจสอบค่า EC ด้วย ควรอยู่ที่ 1.2-1.6 สำหรับผักใบ</li>
+                <li>หากใบเหลืองแพร่กระจายเร็ว อาจเป็นโรคพืช</li>
+                <li>สังเกตรากด้วย หากรากเน่าต้องแก้ไขทันที</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🔄 การป้องกัน</h2>
+            <ul>
+                <li>ตรวจสอบ pH และ EC เป็นประจำทุก 2-3 วัน</li>
+                <li>เปลี่ยนสารละลายทุก 1-2 สัปดาห์</li>
+                <li>รักษาระบบให้สะอาด</li>
+                <li>ให้แสงและระบายอากาศเพียงพอ</li>
+                <li>บันทึกการดูแลเพื่อติดตามแนวโน้ม</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

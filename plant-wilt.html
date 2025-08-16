@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัญญาณเตือน: พืชเหี่ยว - คู่มือไฮโดรโปนิกส์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #dc2626;
+        }
+
+        .image-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #dc2626;
+        }
+
+        .plant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-caption {
+            font-size: 1.1rem;
+            color: #b91c1c;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #dc2626;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: #b91c1c;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border: 2px solid #fca5a5;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #dc2626;
+        }
+
+        .solution-box {
+            background: #ecfdf5;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #22c55e;
+        }
+
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            background: #dc2626;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .urgent-box {
+            background: #fef2f2;
+            border: 3px solid #dc2626;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="javascript:history.back()" class="back-btn">← กลับหน้าหลัก</a>
+            <h1>🥀 พืชเหี่ยว</h1>
+            <p class="subtitle">สัญญาณการขาดน้ำหรือระบบล้มเหลว</p>
+        </header>
+
+        <div class="urgent-box">
+            <h3 style="color: #dc2626; text-align: center;">⏰ ต้องแก้ไขภายใน 2-4 ชั่วโมง</h3>
+            <p style="text-align: center; margin-top: 0.5rem;">พืชเหี่ยวอาจเสียหายถาวรหากไม่ได้รับการแก้ไข</p>
+        </div>
+
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=300&fit=crop&crop=center" 
+                 alt="พืชเหี่ยวในระบบไฮโดรโปนิกส์" class="plant-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-size: 8rem; color: #dc2626;">🥀</div>
+            <p class="image-caption">ตัวอย่างพืชเหี่ยวในระบบไฮโดรโปนิกส์</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>🔍 อาการที่พบ</h2>
+                <ul>
+                    <li>ใบและลำต้นเหี่ยวแห้ง</li>
+                    <li>ใบห้อยลง ไม่แข็งแรง</li>
+                    <li>ใบขอบแห้ง เป็นสีน้ำตาล</li>
+                    <li>การเจริญเติบโตหยุดชะงัก</li>
+                    <li>พืชดูไม่สด ไม่มีชีวิตชีวา</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>⚠️ สาเหตุหลัก</h2>
+                <ul>
+                    <li><strong>ปั๊มน้ำเสีย:</strong> ไม่มีน้ำหมุนเวียน</li>
+                    <li><strong>ท่อน้ำอุดตัน:</strong> น้ำไหลไม่ได้</li>
+                    <li><strong>แสงแดดจัด:</strong> อุณหภูมิสูงเกินไป</li>
+                    <li><strong>ขาดน้ำ:</strong> ระดับน้ำต่ำเกินไป</li>
+                    <li><strong>รากเน่า:</strong> ดูดน้ำไม่ได้</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution-box">
+            <h2>✅ วิธีแก้ไขด่วน</h2>
+            
+            <div class="step-by-step">
+                <h3>ขั้นตอนการแก้ไขเร่งด่วน</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>ตรวจสอบปั๊มน้ำทันที</strong><br>
+                        เช็คว่าปั๊มทำงานหรือไม่ หากไม่ทำงานให้ซ่อมหรือเปลี่ยนใหม่
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <strong>ตรวจท่อและข้อต่อ</strong><br>
+                        ดูว่าท่อมีการอุดตันหรือไม่ ล้างท่อให้สะอาด
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>เพิ่มน้ำและร่มเงา</strong><br>
+                        เติมน้ำให้เพียงพอ ใส่ร่มกันแสงแดดชั่วคราว
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>ฉีดพ่นใบ</strong><br>
+                        ใช้น้ำสะอาดฉีดพ่นใบเบาๆ เพื่อเพิ่มความชื้น
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>
+                        <strong>ตรวจสอบราก</strong><br>
+                        ดูรากว่าสีขาวดีหรือเน่า หากเน่าต้องแก้ไขทันที
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div>
+                        <strong>ติดตามอย่างใกล้ชิด</strong><br>
+                        สังเกตการฟื้นตัวใน 2-4 ชั่วโมงแรก
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h3>🚨 สิ่งที่ต้องระวัง</h3>
+            <ul>
+                <li>อย่าให้น้ำมากเกินไป หากปัญหาคือรากเน่า</li>
+                <li>หลีกเลี่ยงการย้ายพืชขณะเหี่ยว อาจทำให้เสียหายเพิ่ม</li>
+                <li>อย่าใส่สารอาหารเข้มข้นขณะพืชเหี่ยว</li>
+                <li>ระวังอุณหภูมิสูง โดยเฉพาะช่วงกลางวัน</li>
+            </ul>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>🔧 การตรวจสอบระบบ</h2>
+                <ul>
+                    <li>ปั๊มน้ำทำงานต่อเนื่อง</li>
+                    <li>ท่อไม่อุดตัน น้ำไหลสะดวก</li>
+                    <li>ระดับน้ำเพียงพอ</li>
+                    <li>ไม่มีรั่วซึม</li>
+                    <li>อุณหภูมิไม่เกิน 30°C</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🌡️ การควบคุมสภาพแวดล้อม</h2>
+                <ul>
+                    <li>ใส่ร่มในช่วงแสงแดดจัด</li>
+                    <li>เปิดพัดลมระบายอากาศ</li>
+                    <li>เพิ่มความชื้นรอบๆ พืช</li>
+                    <li>หลีกเลี่ยงลมแรง</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔄 การป้องกัน</h2>
+            <ul>
+                <li>ตรวจสอบปั๊มน้ำทุกวัน</li>
+                <li>ทำความสะอาดท่อเป็นประจำ</li>
+                <li>มีปั๊มสำรองไว้</li>
+                <li>ติดตั้งเครื่องวัดอุณหภูมิ</li>
+                <li>เตรียมร่มกันแสงแดด</li>
+                <li>ตรวจระดับน้ำทุกวัน</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>⏰ เวลาการฟื้นตัว</h2>
+            <ul>
+                <li><strong>2-4 ชั่วโมง:</strong> พืชเริ่มฟื้นตัว</li>
+                <li><strong>12-24 ชั่วโมง:</strong> ใบเริ่มแข็งแรง</li>
+                <li><strong>2-3 วัน:</strong> กลับมาปกติ</li>
+                <li><strong>หากไม่ฟื้น:</strong> ตรวจสอบราก</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

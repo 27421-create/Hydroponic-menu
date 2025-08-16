@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือระบบไฮโดรโปนิกส์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        nav {
+            background: #16a34a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #22c55e;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #16a34a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h3 {
+            color: #000000;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #bbf7d0;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .planting-tracker {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tracker-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            background: white;
+            color: #16a34a;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #f0fff4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: none;
+        }
+
+        .result-card.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .notification {
+            background: #fbbf24;
+            color: #92400e;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+            display: none;
+        }
+
+        .notification.show {
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .system-card {
+            background: white;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .system-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .system-header {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+        }
+
+        .system-content {
+            padding: 1.5rem;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .faq-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f9fafb;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #f0fff4;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .plant-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .guide-step {
+            background: #f0fff4;
+            border-left: 4px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .guide-step h4 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .guide-timeline {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+        }
+
+        .timeline-number {
+            background: #22c55e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .tracker-form {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-grid,
+            .system-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🌱</div>
+                    <div>
+                        <h1>คู่มือไฮโดรโปนิกส์</h1>
+                        <p>ปลูกผักสะอาดง่ายๆ ด้วยระบบไฮโดรโปนิกส์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#intro" class="nav-link active">บทนำ</a></li>
+                <li><a href="#setup" class="nav-link">ติดตั้งระบบ</a></li>
+                <li><a href="#usage" class="nav-link">การใช้งาน</a></li>
+                <li><a href="#maintenance" class="nav-link">การดูแล</a></li>
+                <li><a href="#tips" class="nav-link">เคล็ดลับ</a></li>
+                <li><a href="#faq" class="nav-link">คำถาม</a></li>
+                <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- บทนำ -->
+        <section id="intro" class="section active">
+            <h2>🌱 บทนำสู่ไฮโดรโปนิกส์</h2>
+            
+            <div class="intro-grid">
+                <div class="card">
+                    <h3>ไฮโดรโปนิกส์คืออะไร?</h3>
+                    <p>ไฮโดรโปนิกส์คือการปลูกพืชโดยไม่ใช้ดิน แต่ใช้สารอาหารที่ละลายในน้ำแทน ทำให้พืชได้รับสารอาหารที่เหมาะสมและเจริญเติบโตได้ดีกว่าการปลูกแบบดั้งเดิม</p>
+                </div>
+                
+                <div class="card">
+                    <h3>ข้อดีของไฮโดรโปนิกส์</h3>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>ปลูกได้ตลอดปี ไม่ขึ้นกับฤดูกาล</li>
+                        <li>ประหยัดน้ำมากกว่าการปลูกในดิน</li>
+                        <li>ผักสะอาด ปลอดสารพิษ</li>
+                        <li>เจริญเติบโตเร็วกว่าปกติ</li>
+                        <li>ไม่มีโรคจากดิน</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>เป้าหมายของเว็บไซต์</h3>
+                    <p>เว็บไซต์นี้จะเป็นคู่มือครบครันสำหรับผู้ที่ต้องการเริ่มต้นปลูกผักไฮโดรโปนิกส์ พร้อมเครื่องมือช่วยวางแผนการปลูกและเก็บเกี่ยว</p>
+                </div>
+            </div>
+
+            <!-- ระบบบันทึกวันปลูก -->
+            <div class="planting-tracker">
+                <h3>📅 ระบบบันทึกวันปลูกและแจ้งเตือนเก็บเกี่ยว</h3>
+                <p>บันทึกวันที่ปลูกผักของคุณ และระบบจะคำนวณวันเก็บเกี่ยวให้อัตโนมัติ (45 วันหลังจากวันปลูก)</p>
+                
+                <form class="tracker-form" id="plantingForm">
+                    <div class="form-group">
+                        <label for="plantType">ประเภทผัก:</label>
+                        <select id="plantType" required>
+                            <option value="">เลือกประเภทผัก</option>
+                            <option value="ผักกาดหอม">กวางตุ้ง</option>
+                            <option value="ผักบุ้งจีน">ใบโหระพา</option>
+                            <option value="คะน้า">ผักร็อคเก็ต</option>
+                            <option value="ผักกาดขาว">ผักคะน้า</option>
+                            <option value="ผักสลัด">ผักโขม</option>
+                            <option value="โหระพา">ผักกาดหอม</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plantDate">วันที่ปลูก:</label>
+                        <input type="date" id="plantDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plantsubmit">บันทึกการปลูก:</label>
+                        <button type="submit" class="btn">บันทึกการปลูก</button>
+                    </div>
+                </form>
+
+                <div id="resultCard" class="result-card">
+                    <h4>📋 ข้อมูลการปลูกของคุณ</h4>
+                    <div id="plantingInfo"></div>
+                </div>
+
+                <div id="notification" class="notification">
+                    <strong>🔔 แจ้งเตือน:</strong> <span id="notificationText"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- การติดตั้งและตั้งค่า -->
+        <section id="setup" class="section">
+            <h2>🔧 การติดตั้งและตั้งค่าระบบ</h2>
+            
+            <h3>อุปกรณ์ที่จำเป็น</h3>
+            <div class="system-grid">
+                <div class="system-card">
+                    <div class="system-header">ถังน้ำและปั๊ม</div>
+                    <div class="system-content">
+                        <p>ใช้สำหรับเก็บสารละลายและสูบน้ำหมุนเวียน</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>ถังน้ำ 20-50 ลิตร</li>
+                            <li>ปั๊มน้ำ 20-40 วัตต์</li>
+                            <li>ท่อและข้อต่อ</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">กระบะปลูก</div>
+                    <div class="system-content">
+                        <p>สำหรับใส่ตัวกลางและรองรับพืช</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>กระบะพลาสติก</li>
+                            <li>ฝาปิดมีรู</li>
+                            <li>แก้วน้ำพลาสติก</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">ระบบแสง</div>
+                    <div class="system-content">
+                        <p>หลอดไฟสำหรับการเจริญเติบโต</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>หลอด LED grow light</li>
+                            <li>ขั่วหลอดไฟ</li>
+                            <li>Timer สำหรับควบคุมเวลา</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">สารอาหารและตัวกลาง</div>
+                    <div class="system-content">
+                        <p>สารอาหารและตัวกลางสำหรับพืช</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>สารอาหาร A และ B</li>
+                            <li>ร็อควูล หรือ โคโคพีท</li>
+                            <li>อุปกรณ์วัด pH และ EC</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 เคล็ดลับการติดตั้ง</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>เลือกสถานที่ที่มีแสงแดดหรือติดตั้งไฟเสริม</li>
+                    <li>ตรวจสอบระบบไฟฟ้าให้ปลอดภัย</li>
+                    <li>ทดสอบการทำงานของปั๊มก่อนเริ่มปลูก</li>
+                    <li>เตรียมระบบระบายน้ำสำรอง</li>
+                </ul>
+            </div>
+
+            <h3>การตั้งค่าเริ่มต้น</h3>
+            <div class="card">
+                <h4>1. เตรียมสารละลายอาหาร</h4>
+                <p>ผสมสารอาหาร A และ B ในอัตราส่วน 1:1 ตามคำแนะนำบนฉลาก โดยทั่วไปใช้ 1-2 กรัม ต่อ น้ำ 1 ลิตร</p>
+            </div>
+
+            <div class="card">
+                <h4>2. ปรับค่า pH</h4>
+                <p>ปรับค่า pH ให้อยู่ในช่วง 5.5-6.5 ซึ่งเป็นค่าที่เหมาะสมสำหรับการดูดซึมสารอาหารของพืช</p>
+            </div>
+
+            <div class="card">
+                <h4>3. เลือกและเตรียมเมล็ดพันธุ์</h4>
+                <p>เลือกเมล็ดพันธุ์คุณภาพดี แช่น้ำหรือใช้กระดาษชื้นช่วยในการงอก</p>
+            </div>
+        </section>
+
+        <!-- การใช้งาน -->
+        <section id="usage" class="section">
+            <h2>🖥️ การใช้งานระบบ</h2>
+            
+            <h3>ประเภทระบบไฮโดรโปนิกส์</h3>
+            <div class="system-grid">
+                <div class="system-card">
+                    <div class="system-header">NFT (Nutrient Film Technique)</div>
+                    <div class="system-content">
+                        <p>สารละลายไหลเป็นฟิล์มบางๆ ผ่านรากพืช เหมาะสำหรับผักใบ</p>
+                        <strong>เหมาะสำหรับ:</strong> ผักสลัด, ผักกาดหอม, โหระพา
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">DWC (Deep Water Culture)</div>
+                    <div class="system-content">
+                        <p>รากพืชแช่อยู่ในสารละลายตลอดเวลา มีการเติมอากาศ</p>
+                        <strong>เหมาะสำหรับ:</strong> ผักกาดขาว, คะน้า, ผักบุ้งจีน
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">Ebb and Flow</div>
+                    <div class="system-content">
+                        <p>น้ำท่วมขึ้นและลงเป็นช่วงๆ ตามเวลาที่กำหนด</p>
+                        <strong>เหมาะสำหรับ:</strong> พืชทุกประเภท รวมถึงไม้ผล
+                    </div>
+                </div>
+            </div>
+
+            <h3>พืชที่เหมาะสมสำหรับมือใหม่</h3>
+            <div class="intro-grid">
+                <div class="card plant-card" onclick="showPlantGuide('ผักใบเขียว')">
+                    <h4>🥬 ผักใบเขียว</h4>
+                    <p><strong>ผักกาดหอม, ผักสลัด, คะน้าต้น</strong> - เจริญเติบโตเร็ว เก็บเกี่ยวได้ใน 30-45 วัน</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 0.5rem; font-size: 0.9rem; color: #16a34a;">
+                        <strong>คลิกเพื่อดูวิธีการปลูก</strong>
+                    </div>
+                </div>
+                
+                <div class="card plant-card" onclick="showPlantGuide('ผักสมุนไพร')">
+                    <h4>🌿 ผักสมุนไพร</h4>
+                    <p><strong>โหระพา, กะเพรา, ผักชี</strong> - ใช้ได้ทั้งใบและเมล็ด มีกลิ่นหอม</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 0.5rem; font-size: 0.9rem; color: #16a34a;">
+                        <strong>คลิกเพื่อดูวิธีการปลูก</strong>
+                    </div>
+                </div>
+                
+                <div class="card plant-card" onclick="showPlantGuide('ผักลูก')">
+                    <h4>🥒 ผักลูก (ขั้นสูง)</h4>
+                    <p><strong>มะเขือเทศราชินี, พริก, แตงกวา</strong> - ต้องการประสบการณ์และการดูแลมากขึ้น</p>
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(34, 197, 94, 0.1); border-radius: 0.5rem; font-size: 0.9rem; color: #16a34a;">
+                        <strong>คลิกเพื่อดูวิธีการปลูก</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal สำหรับแสดงคู่มือการปลูก -->
+            <div id="plantGuideModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="modalTitle">คู่มือการปลูก</h3>
+                        <span class="close" onclick="closePlantGuide()">&times;</span>
+                    </div>
+                    <div class="modal-body" id="modalContent">
+                        <!-- เนื้อหาจะถูกเพิ่มด้วย JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- การดูแลระบบ -->
+        <section id="maintenance" class="section">
+            <h2>🔬 การดูแลและควบคุมระบบ</h2>
+            
+            <h3>การควบคุม pH และสารอาหาร</h3>
+            <div class="card">
+                <h4>การตรวจสอบ pH</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ตรวจสอบค่า pH ทุก 2-3 วัน</li>
+                    <li>ค่า pH ที่เหมาะสม: 5.5-6.5</li>
+                    <li>ใช้ pH Up หรือ pH Down ในการปรับค่า</li>
+                    <li>เพิ่มทีละน้อย และคนให้เข้ากันก่อนวัดใหม่</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>การวัดค่า EC (Electrical Conductivity)</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ค่า EC บอกความเข้มข้นของสารอาหาร</li>
+                    <li>ผักใบ: EC 1.2-1.6</li>
+                    <li>ผักลูก: EC 2.0-3.0</li>
+                    <li>หากค่า EC สูงเกินไป ให้เติมน้ำเปล่า</li>
+                    <li>หากค่า EC ต่ำเกินไป ให้เติมสารอาหาร</li>
+                </ul>
+            </div>
+
+            <h3>การควบคุมอุณหภูมิและแสง</h3>
+            <div class="intro-grid">
+                <div class="card">
+                    <h4>🌡️ อุณหภูมิ</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>อุณหภูมิกลางวัน: 22-28°C</li>
+                        <li>อุณหภูมิกลางคืน: 18-22°C</li>
+                        <li>หลีกเลี่ยงอุณหภูมิสูงเกิน 35°C</li>
+                        <li>ใช้พัดลมช่วยระบายอากาศ</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>💡 แสงสว่าง</h4>
+                    <ul style="padding-left: 1.5rem;">
+                        <li>ต้องการแสง 12-16 ชั่วโมงต่อวัน</li>
+                        <li>ใช้ LED grow light หากแสงธรรมชาติไม่เพียงพอ</li>
+                        <li>แสงแดดโดยตรง 4-6 ชั่วโมง</li>
+                        <li>หลีกเลี่ยงแสงแดดจัดเกินไป</li>
+                    </ul>
+                </div>
+            </div>
+
+                  <div class="warning-box">
+                <h4>⚠️ สัญญาณเตือนที่ต้องระวัง</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ใบเหลือง - อาจขาดไนโตรเจนหรือน้ำท่วม</li>
+                    <li>รากเน่า - สารละลายเสีย หรือขาดออกซิเจน</li>
+                    <li>พืชเหี่ยว - ปั๊มน้ำเสีย หรือท่ออุดตัน</li>
+                    <li>เจริญเติบโตช้า - แสงไม่เพียงพอ หรือ EC ผิดปกติ</li>
+                </ul>
+                                 
+                <div style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button onclick="window.open('leaf-yellow.html', '_blank')" class="btn" style="background: #fbbf24; color: white; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                        🟡 ใบเหลือง
+                    </button>
+                    <button onclick="window.open('root-rot.html', '_blank')" class="btn" style="background: #92400e; color: white; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                        🤎 รากเน่า
+                    </button>
+                    <button onclick="window.open('plant-wilt.html', '_blank')" class="btn" style="background: #dc2626; color: white; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                        🥀 พืชเหี่ยว
+                    </button>
+                    <button onclick="window.open('slow-growth.html', '_blank')" class="btn" style="background: #059669; color: white; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                        🐌 เจริญเติบโตช้า
+                    </button>
+                </div>
+            </div>
+
+            <h3>การทำความสะอาดและซ่อมบำรุง</h3>
+            <div class="card">
+                <h4>การทำความสะอาดประจำสัปดาห์</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ทำความสะอาดท่อและข้อต่อ</li>
+                    <li>ตรวจสอบการทำงานของปั๊ม</li>
+                    <li>เช็ดถังน้ำและเปลี่ยนสารละลายทุก 1-2 สัปดาห์</li>
+                    <li>ตรวจสอบสายไฟและอุปกรณ์ไฟฟ้า</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- เคล็ดลับและแนวทาง -->
+        <section id="tips" class="section">
+            <h2>💡 เคล็ดลับและคำแนะนำ</h2>
+            
+            <h3>การปลูกสำหรับมือใหม่</h3>
+            <div class="intro-grid">
+                <div class="card">
+                    <h4>🌱 เริ่มต้นด้วยผักใบ</h4>
+                    <p>ผักกาดหอม ผักสลัด คะน้าต้น เป็นตัวเลือกที่ดีสำหรับมือใหม่ เพราะเจริญเติบโตเร็วและไม่ยุ่งยาก</p>
+                </div>
+                
+                <div class="card">
+                    <h4>📊 จดบันทึกการดูแล</h4>
+                    <p>บันทึก pH, EC, อุณหภูมิ และสภาพพืชเป็นประจำ เพื่อติดตามการเจริญเติบโตและแก้ไขปัญหา</p>
+                </div>
+                
+                <div class="card">
+                    <h4>🔄 หมุนเวียนการปลูก</h4>
+                    <p>วางแผนปลูกผักหลายรุ่น เว้นระยะ 2 สัปดาห์ เพื่อให้มีผักเก็บเกี่ยวอย่างต่อเนื่อง</p>
+                </div>
+            </div>
+
+            <h3>การตรวจสอบสุขภาพพืช</h3>
+            <div class="system-grid">
+                <div class="system-card">
+                    <div class="system-header">ใบและลำต้น</div>
+                    <div class="system-content">
+                        <ul style="padding-left: 1rem;">
+                            <li>ใบเขียวสด แข็งแรง</li>
+                            <li>ไม่มีจุดเหลือง หรือน้ำตาล</li>
+                            <li>ลำต้นแข็งแรง ไม่เหี่ยว</li>
+                            <li>การเจริญเติบโตสม่ำเสมอ</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">ระบบราก</div>
+                    <div class="system-content">
+                        <ul style="padding-left: 1rem;">
+                            <li>รากสีขาว หรือครีม</li>
+                            <li>ไม่มีกลิ่นเหม็น</li>
+                            <li>รากไม่ลื่น หรือเหนียว</li>
+                            <li>มีรากฝอยจำนวนมาก</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">สารละลายและสภาพแวดล้อม</div>
+                    <div class="system-content">
+                        <ul style="padding-left: 1rem;">
+                            <li>น้ำใส ไม่ขุ่น</li>
+                            <li>ไม่มีตะไคร่น้ำ</li>
+                            <li>กลิ่นไม่เหม็นหืน</li>
+                            <li>การไหลเวียนปกติ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>🏆 เคล็ดลับความสำเร็จ</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ความสม่ำเสมอในการดูแลคือกุญจแจสำคัญ</li>
+                    <li>ติดตามข้อมูลและเรียนรู้จากความผิดพลาด</li>
+                    <li>เริ่มเล็กๆ แล้วค่อยขยายระบบ</li>
+                    <li>ศึกษาข้อมูลอย่างต่อเนื่อง</li>
+                </ul>
+            </div>
+
+            <h3>การจัดการโรคและแมลง</h3>
+            <div class="card">
+                <h4>การป้องกันโรค</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>รักษาความสะอาดของระบบ</li>
+                    <li>ควบคุมอุณหภูมิและความชื้น</li>
+                    <li>ใช้น้ำสะอาด และสารอาหารคุณภาพดี</li>
+                    <li>ตรวจสอบพืชเป็นประจำ</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>การจัดการแมลงศัตรูพืช</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ใช้แสงไฟล่อแมลง</li>
+                    <li>ปลูกพืชไล่แมลงข้างๆ</li>
+                    <li>ใช้สบู่เหลวผสมน้ำฉีดพ่น</li>
+                    <li>หลีกเลี่ยงยาฆ่าแมลงที่เป็นพิษ</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- คำถามที่พบบ่อย -->
+        <section id="faq" class="section">
+            <h2>❓ คำถามที่พบบ่อย</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ทำไมพืชไม่เติบโต?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>สาเหตุหลักๆ ได้แก่:</p>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>ค่า pH ไม่เหมาะสม (ควรอยู่ที่ 5.5-6.5)</li>
+                        <li>ความเข้มข้นสารอาหารไม่ถูกต้อง</li>
+                        <li>แสงไม่เพียงพอ</li>
+                        <li>อุณหภูมิสูงหรือต่ำเกินไป</li>
+                        <li>ระบบไหลเวียนมีปัญหา</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ต้องใช้เวลาเท่าไรในการเห็นผล?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>ขึ้นอยู่กับประเภทพืช:</p>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>ผักใบ (ผักสลัด, คะน้า): 25-40 วัน</li>
+                        <li>ผักสมุนไพร (โหระพา, ผักชี): 30-45 วัน</li>
+                        <li>ผักลูก (มะเขือเทศ, พริก): 60-90 วัน</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ระบบนี้ใช้งานได้นานแค่ไหน?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>หากดูแลอย่างถูกต้อง ระบบไฮโดรโปนิกส์สามารถใช้งานได้หลายปี โดยต้องเปลี่ยนสารละลายทุก 1-2 สัปดาห์ และทำความสะอาดอุปกรณ์เป็นประจำ</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ต้นทุนเริ่มต้นเท่าไร?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>ต้นทุนขึ้นอยู่กับขนาดระบบ:</p>
+                    <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                        <li>ระบบเล็ก (4-6 ต้น): 2,000-4,000 บาท</li>
+                        <li>ระบบกลาง (10-15 ต้น): 5,000-8,000 บาท</li>
+                        <li>ระบบใหญ่ (20+ ต้น): 10,000+ บาท</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>ปลูกในที่ร่มได้หรือไม่?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>ได้ครับ แต่ต้องมีแสงเสริม โดยใช้หลอด LED grow light อย่างน้อย 12-16 ชั่วโมงต่อวัน และต้องมีการระบายอากาศที่ดี</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ติดต่อและสนับสนุน -->
+        <section id="contact" class="section">
+            <h2>📞 การสนับสนุนและติดต่อ</h2>
+            
+            <div class="intro-grid">
+                <div class="card">
+                    <h3>📧 ติดต่อทางอีเมล</h3>
+                    <p>ส่งคำถามหรือขอคำปรึกษาได้ที่</p>
+                    <strong>Hydropronics@gmail.com</strong>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">เราจะตอบกลับภายใน 24 ชั่วโมง</p>
+                </div>
+                
+                <div class="card">
+                    <h3>📱 โทรศัพท์</h3>
+                    <p>สำหรับคำปรึกษาด่วน</p>
+                    <strong>096-138-9181</strong>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">เปิดให้บริการ: จ-ส 9:00-18:00</p>
+                </div>
+                
+                <div class="card">
+                    <h3>💬 Line Official</h3>
+                    <p>แชทสด และรับข้อมูลใหม่ๆ</p>
+                    <strong>@Hydropronics</strong>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">ตอบคำถาม 24/7</p>
+                </div>
+            </div>
+
+            <h3>การขอคำแนะนำเพิ่มเติม</h3>
+            <div class="planting-tracker">
+                <h4>📝 ฟอร์มขอคำปรึกษา</h4>
+                <form class="tracker-form">
+                    <div class="form-group">
+                        <label>ชื่อ-นามสกุล:</label>
+                        <input type="text" placeholder="กรุณากรอกชื่อของคุณ">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>อีเมล:</label>
+                        <input type="email" placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>หัวข้อปัญหา:</label>
+                        <select>
+                            <option>เลือกหัวข้อ</option>
+                            <option>การติดตั้งระบบ</option>
+                            <option>ปัญหาการเจริญเติบโต</option>
+                            <option>การดูแลรักษา</option>
+                            <option>การเลือกซื้ออุปกรณ์</option>
+                            <option>อื่นๆ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: 1/-1;">
+                        <label>รายละเอียดปัญหา:</label>
+                        <textarea style="min-height: 100px; padding: 0.75rem; border: none; border-radius: 0.5rem; font-size: 1rem; background: rgba(255, 255, 255, 0.9);" placeholder="อธิบายปัญหาหรือคำถามของคุณ..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">ส่งคำขอปรึกษา</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ ข้อควรระวังและคำเตือน</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>ใช้อุปกรณ์ไฟฟ้าในที่แห้ง และตรวจสอบสายไฟเป็นประจำ</li>
+                    <li>ไม่ใช้สารเคมีที่ไม่รู้จักหรือไม่เหมาะสม</li>
+                    <li>รักษาระยะห่างของปั๊มน้ำจากแหล่งน้ำ</li>
+                    <li>ระวังการใช้หลอดไฟที่ให้ความร้อนสูง</li>
+                    <li>เก็บสารอาหารในที่แห้ง เย็น</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <h4>📚 แหล่งข้อมูลเพิ่มเติม</h4>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>คู่มือการปลูกเฉพาะพืช</li>
+                    <li>วิดีโอสาธิตการติดตั้งระบบ</li>
+                    <li>กลุม Facebook ชุมชนไฮโดรโปนิกส์ไทย</li>
+                    <li>บทความเทคนิคขั้นสูง</li>
+                    <li>การอบรมเชิงปฏิบัติการ</li>
+                </ul>
+            </div>
+
+            <h3>นโยบายความเป็นส่วนตัว</h3>
+            <div class="card">
+                <p>เรามุ่งมั่นปกป้องข้อมูลส่วนบุคคลของคุณ ข้อมูลที่เก็บรวบรวมจะใช้เฉพาะในการติดต่อและให้บริการเท่านั้น ไม่มีการแบ่งปันข้อมูลกับบุคคลที่สาม</p>
+            </div>
+
+            <h3>ข้อกำหนดการใช้งาน</h3>
+            <div class="card">
+                <p>การใช้งานเว็บไซต์นี้ถือว่าคุณยอมรับเงื่อนไขการใช้งาน เนื้อหาทั้งหมดเป็นลิขสิทธิ์ของเจ้าของเว็บไซต์ ห้ามนำไปใช้เชิงพาณิชย์โดยไม่ได้รับอนุญาต</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 คู่มือไฮโดรโปนิกส์ | ปลูกผักสะอาด เริ่มต้นง่ายๆ</p>
+            <p>พัฒนาด้วยความใส่ใจ เพื่อการเกษตรยั่งยืน 🌱</p>
+        </div>
+    </footer>
+
+    <script>
+        // ฟังก์ชันสำหรับการนำทางระหว่างหน้า
+        function showSection(sectionId) {
+            // ซ่อนทุกส่วน
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // แสดงส่วนที่เลือก
+            document.getElementById(sectionId).classList.add('active');
+            
+            // อัปเดต active state ของเมนู
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // เพิ่ม active class ให้ลิงก์ที่เลือก
+            const activeLink = document.querySelector(`[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // เลื่อนกลับไปด้านบน
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Event listeners สำหรับเมนู
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                showSection(sectionId);
+            });
+        });
+
+        // ฟังก์ชันสำหรับระบบบันทึกวันปลูก
+        document.getElementById('plantingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const plantType = document.getElementById('plantType').value;
+            const plantDate = document.getElementById('plantDate').value;
+            
+            if (!plantType || !plantDate) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+                return;
+            }
+            
+            // คำนวณวันเก็บเกี่ยว (45 วันหลังจากวันปลูก)
+            const plantingDate = new Date(plantDate);
+            const harvestDate = new Date(plantingDate);
+            harvestDate.setDate(plantingDate.getDate() + 45);
+            
+            // แสดงผลลัพธ์
+            const resultCard = document.getElementById('resultCard');
+            const plantingInfo = document.getElementById('plantingInfo');
+            
+            plantingInfo.innerHTML = `
+                <p><strong>ประเภทผัก:</strong> ${plantType}</p>
+                <p><strong>วันที่ปลูก:</strong> ${new Date(plantDate).toLocaleDateString('th-TH')}</p>
+                <p><strong>วันเก็บเกี่ยว:</strong> ${harvestDate.toLocaleDateString('th-TH')}</p>
+                <p><strong>จำนวนวันที่เหลือ:</strong> ${Math.ceil((harvestDate - new Date()) / (1000 * 60 * 60 * 24))} วัน</p>
+            `;
+            
+            resultCard.classList.add('show');
+            
+            // ตรวจสอบการแจ้งเตือน
+            checkHarvestNotification(harvestDate, plantType);
+        });
+
+        function checkHarvestNotification(harvestDate, plantType) {
+            const today = new Date();
+            const daysUntilHarvest = Math.ceil((harvestDate - today) / (1000 * 60 * 60 * 24));
+            
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            if (daysUntilHarvest <= 3 && daysUntilHarvest >= 0) {
+                notificationText.textContent = `${plantType} ของคุณจะพร้อมเก็บเกี่ยวในอีก ${daysUntilHarvest} วัน!`;
+                notification.classList.add('show');
+            } else if (daysUntilHarvest < 0) {
+                notificationText.textContent = `${plantType} ของคุณพร้อมเก็บเกี่ยวแล้ว!`;
+                notification.classList.add('show');
+            } else {
+                notification.classList.remove('show');
+            }
+        }
+
+        // ฟังก์ชันสำหรับ FAQ
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const symbol = element.querySelector('span:last-child');
+            
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                symbol.textContent = '+';
+            } else {
+                answer.classList.add('show');
+                symbol.textContent = '-';
+            }
+        }
+
+        // ตั้งวันที่ปัจจุบันเป็นค่าเริ่มต้น
+        document.getElementById('plantDate').valueAsDate = new Date();
+
+        // ฟังก์ชันสำหรับแสดงคู่มือการปลูก
+        function showPlantGuide(plantType) {
+            const modal = document.getElementById('plantGuideModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalTitle.textContent = `คู่มือการปลูก${plantType}`;
+            
+            let guideContent = '';
+            
+            if (plantType === 'ผักใบเขียว') {
+                guideContent = `
+                    <div class="guide-step">
+                        <h4>🌱 ข้อมูลทั่วไป</h4>
+                        <p><strong>เวลาเก็บเกี่ยว:</strong> 30-45 วัน</p>
+                        <p><strong>ความยาก:</strong> ง่าย - เหมาะสำหรับมือใหม่</p>
+                        <p><strong>ผลผลิต:</strong> สูง - เก็บได้หลายครั้ง</p>
+                    </div>
+                    
+                    <div class="guide-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div>
+                                <strong>เตรียมเมล็ด</strong><br>
+                                แช่เมล็ดในน้ำ 2-4 ชั่วโมง หรือใช้กระดาษชื้นช่วยงอก
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div>
+                                <strong>ปลูกในร็อควูล</strong><br>
+                                ใส่เมล็ดในร็อควูลที่ชุ่มน้ำ รอจนกิ่งใบแรกออก (5-7 วัน)
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div>
+                                <strong>ย้ายเข้าระบบ</strong><br>
+                                ย้ายต้นกล้าเข้าระบบไฮโดรโปนิกส์ เริ่มให้สารอาหารเจือจาง
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">4</div>
+                            <div>
+                                <strong>ดูแลและเก็บเกี่ยว</strong><br>
+                                ควบคุม pH 5.5-6.5, EC 1.2-1.6 เก็บใบด้านนอกก่อน
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h4>💡 เคล็ดลับพิเศษ</h4>
+                        <ul>
+                            <li>เก็บใบด้านนอกก่อน ใส่กลางยังเติบโตต่อได้</li>
+                            <li>ปลูกแบบต่อเนื่อง เว้น 2 สัปดาห์ จะมีผักกินตลอด</li>
+                            <li>ควรให้แสง 12-14 ชั่วโมงต่อวัน</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (plantType === 'ผักสมุนไพร') {
+                guideContent = `
+                    <div class="guide-step">
+                        <h4>🌿 ข้อมูลทั่วไป</h4>
+                        <p><strong>เวลาเก็บเกี่ยว:</strong> 35-50 วัน</p>
+                        <p><strong>ความยาก:</strong> ง่าย-ปานกลาง</p>
+                        <p><strong>ผลผลิต:</strong> ใช้ได้ทั้งใบและดอก</p>
+                    </div>
+                    
+                    <div class="guide-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div>
+                                <strong>เลือกเมล็ดคุณภาพ</strong><br>
+                                เมล็ดโหระพา กะเพรา หรือผักชี ควรเป็นเมล็ดใหม่
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div>
+                                <strong>งอกเมล็ด</strong><br>
+                                ใช้สำลีชื้น หรือกระดาษชื้น รอ 3-5 วันจนงอก
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div>
+                                <strong>ปลูกในระบบ</strong><br>
+                                ย้ายต้นกล้าที่มีใบจริง 2 คู่เข้าระบบ
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">4</div>
+                            <div>
+                                <strong>เก็บใบและดูแล</strong><br>
+                                เก็บใบเมื่อสูง 15-20 ซม. ตัดยอดเพื่อให้แตกกิ่ง
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h4>🌟 เคล็ดลับพิเศษ</h4>
+                        <ul>
+                            <li>ตัดยอดเมื่อสูง 15 ซม. จะทำให้แตกกิ่งมากขึ้น</li>
+                            <li>ให้แสงแดด 6-8 ชั่วโมง จะได้กลิ่นหอมมาก</li>
+                            <li>เก็บใบตอนเช้า จะได้กลิ่นเต็มที่</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (plantType === 'ผักลูก') {
+                guideContent = `
+                    <div class="guide-step">
+                        <h4>🥒 ข้อมูลทั่วไป</h4>
+                        <p><strong>เวลาเก็บเกี่ยว:</strong> 60-90 วัน</p>
+                        <p><strong>ความยาก:</strong> ยาก - ต้องการประสบการณ์</p>
+                        <p><strong>ผลผลิต:</strong> ให้ผลต่อเนื่องนาน</p>
+                    </div>
+                    
+                    <div class="guide-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-number">1</div>
+                            <div>
+                                <strong>เตรียมกล้าที่แข็งแรง</strong><br>
+                                ปลูกกล้าในถาดเพาะเมล็ด รอจนกิ่งใบจริง 4-6 ใบ
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">2</div>
+                            <div>
+                                <strong>ระบบที่เหมาะสม</strong><br>
+                                ใช้ระบบ DWC หรือ Dutch Bucket เพื่อรองรับขนาดใหญ่
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">3</div>
+                            <div>
+                                <strong>ดูแลเข้มข้น</strong><br>
+                                ควบคุม pH 6.0-6.8, EC 2.0-3.0, ต้องการแสงเต็มวัน
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-number">4</div>
+                            <div>
+                                <strong>ช่วยผสมเกสร</strong><br>
+                                เขย่าดอก หรือใช้แปรงเล็กช่วยผสมเกสร
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>⚠️ สิ่งที่ต้องระวัง</h4>
+                        <ul>
+                            <li>ต้องการพื้นที่มาก และยึดค้ำยันต้น</li>
+                            <li>สารอาหารเข้มข้นกว่าผักใบมาก</li>
+                            <li>ต้องควบคุมอุณหภูมิไม่ให้สูงเกิน 30°C</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            modalContent.innerHTML = guideContent;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePlantGuide() {
+            const modal = document.getElementById('plantGuideModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ปิด modal เมื่อคลิกนอกพื้นที่
+        window.onclick = function(event) {
+            const modal = document.getElementById('plantGuideModal');
+            if (event.target === modal) {
+                closePlantGuide();
+            }
+        }
+    </script>
