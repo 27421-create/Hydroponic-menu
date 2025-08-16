@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัญญาณเตือน: เจริญเติบโตช้า - คู่มือไฮโดรโปนิกส์</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-btn {
+            background: #059669;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(5, 150, 105, 0.3);
+        }
+
+        .back-btn:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
+        }
+
+        header {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #059669;
+        }
+
+        .image-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #059669;
+        }
+
+        .plant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-caption {
+            font-size: 1.1rem;
+            color: #047857;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #059669;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            color: #047857;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .solution-box {
+            background: #ecfdf5;
+            border: 2px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid #22c55e;
+        }
+
+        .step-by-step {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            background: #059669;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #059669;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← กลับหน้าหลัก</a>
+        
+        <header>
+            <h1>เจริญเติบโตช้า</h1>
+            <p class="subtitle">การวิเคราะห์และแก้ไขปัญหาการเจริญเติบโต</p>
+        </header>
+
+        <div class="image-section">
+            <img src="https://i.ytimg.com/vi/TvGbYu20AMw/maxresdefault.jpg" 
+                 alt="พืชเจริญเติบโตช้าในระบบไฮโดรโปนิกส์" class="plant-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; font-size: 8rem; color: #059669;">🌱</div>
+            <p class="image-caption">เปรียบเทียบการเจริญเติบโตปกติและช้า</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2> อาการที่พบ</h2>
+                <ul>
+                    <li>ใบใหม่ออกช้า หรือไม่ออกเลย</li>
+                    <li>ใบมีขนาดเล็กกว่าปกติ</li>
+                    <li>สีของใบจางกว่าปกติ</li>
+                    <li>ลำต้นเล็ก ไม่แข็งแรง</li>
+                    <li>ราก เจริญเติบโตน้อย</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2> สาเหตุหลัก</h2>
+                <ul>
+                    <li><strong>แสงไม่เพียงพอ:</strong> สาเหตุพบบ่อยที่สุด</li>
+                    <li><strong>EC ต่ำเกินไป:</strong> สารอาหารน้อย</li>
+                    <li><strong>pH ผิดปกติ:</strong> ดูดซึมธาตุอาหารไม่ได้</li>
+                    <li><strong>อุณหภูมิไม่เหมาะสม:</strong> สูงหรือต่ำเกินไป</li>
+                    <li><strong>ขาดออกซิเจนที่ราก:</strong> การหายใจของรากไม่ดี</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ปัจจัย</th>
+                        <th>ค่าปกติ</th>
+                        <th>ปัญหาที่พบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>แสง</strong></td>
+                        <td>12-16 ชั่วโมง/วัน</td>
+                        <td>น้อยกว่า 10 ชั่วโมง</td>
+                    </tr>
+                    <tr>
+                        <td><strong>pH</strong></td>
+                        <td>5.5-6.5</td>
+                        <td>ต่ำกว่า 5.0 หรือสูงกว่า 7.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EC (ผักใบ)</strong></td>
+                        <td>1.2-1.6</td>
+                        <td>ต่ำกว่า 1.0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>อุณหภูมิ</strong></td>
+                        <td>22-28°C</td>
+                        <td>ต่ำกว่า 18°C หรือสูงกว่า 35°C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="solution-box">
+            <h2> วิธีแก้ไขทีละขั้นตอน</h2>
+            
+            <div class="step-by-step">
+                <h3>ขั้นตอนการวินิจฉัยและแก้ไข</h3>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <strong>ตรวจสอบแสงส่วางก์</strong><br>
+                        วัดชั่วโมงแสงต่อวัน เพิ่ม LED grow light หากไม่เพียงพอ
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <strong>ตรวจสอบอุณหภูมิ</strong><br>
+                        รักษาอุณหภูมิให้อยู่ในช่วง 22-28°C ใช้พัดลมหรือฮีตเตอร์ตามความจำเป็น
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <strong>เพิ่มออกซิเจนที่ราก</strong><br>
+                        ตรวจสอบปั๊มลม เพิ่มหัวทำฟอง หรือเปลี่ยนตำแหน่งให้ดีขึ้น
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div>
+                        <strong>ปรับสารอาหาร</strong><br>
